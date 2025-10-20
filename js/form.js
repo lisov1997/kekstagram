@@ -24,6 +24,7 @@
 
 // 1.3 Закрытие формы редактирования изображения производится либо нажатием на кнопку #upload-cancel, либо нажатием клавиши Esc. Элементу .img-upload__overlay возвращается класс hidden. У элемента body удаляется класс modal-open.
 
+
 // Напишите код для валидации формы добавления изображения. Список полей для валидации:
 
 // Хэш-теги
@@ -37,17 +38,52 @@
 // Для валидации хэш-тегов вам придётся вспомнить, как работать с массивами. Набор хэш-тегов можно превратить в массив, воспользовавшись методом .split(). Он разбивает строки на массивы. После этого, вы можете написать цикл, который будет ходить по полученному массиву и проверять каждый из хэш-тегов на предмет соответствия ограничениям. Если хотя бы один из тегов не проходит нужных проверок, показывать сообщение об ошибке.
 
 // Поля, не перечисленные в техзадании, но существующие в разметке, особой валидации не требуют.
+import { isEscapeKey } from "./until.js";
 
-// На примере проекта «Кекстаграм» вы можете посмотреть, как должен выглядеть проект после выполнения этого задания.
+const body = document.querySelector('body');
+const uploadForm = body.querySelector('.img-upload__form');
+const inputFile = uploadForm.querySelector('#upload-file');
+const imgEditor = uploadForm.querySelector('.img-upload__overlay');
+const cancelButton = imgEditor.querySelector('#upload-cancel');
 
-const imgUploadInput = document.querySelector('#upload-file');
-const imgEditForm = document.querySelector('.img-upload__overlay');
-imgEditForm.classList.remove('hidden')
+// const onModalEscKeyDown = () => {};
+
+function openUploadModal () {
+  imgEditor.classList.remove('hidden');
+  body.classList.add('modal-open');
+}
+
+function closeUploadModal () {
+  imgEditor.classList.add('hidden');
+  body.classList.remove('modal-open');
+  uploadForm.reset();
+}
+
+inputFile.addEventListener ('change' , () => {
+  openUploadModal();
+});
+
+cancelButton.addEventListener('click', ()=> {
+  closeUploadModal();
+});
+
+document.addEventListener ('keydown', (evt) => {
+  if(isEscapeKey(evt)) {
+    evt.preventDefault();
+    closeUploadModal();
+  }
+});
+
+document.removeEventListener ('keydown', () =>{});
+
 
 console.group(`Переменные`);
-console.log(imgUploadInput);
-console.log(imgEditForm);
+console.log(inputFile);
+console.log(imgEditor);
+console.log(body);
+console.log(cancelButton);
+console.log(uploadForm);
 console.groupEnd();
 
-export { imgUploadInput };
+export { };
 

@@ -1,9 +1,9 @@
 import { getPictures } from './data.js';
 import { renderPictures } from './picture.js';
-import { imgUploadInput } from './form.js';
+import './form.js';
 renderPictures(getPictures());
 
 
 // console.group(`Переменные`);
-// console.log(imgUploadInput);
+// console.log(inputFile);
 // console.groupEnd();
