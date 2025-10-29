@@ -74,8 +74,4 @@ const showBigPicture = (data) => {
 
 сancelButton.addEventListener('click', onCanselButtonClick);
 
-// console.group(`Переменные`);
-// console.log();
-// console.groupEnd();
-
 export { showBigPicture };

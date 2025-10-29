@@ -11,5 +11,10 @@ const getRandomArrayElement = (array) =>
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
+const isEmpty = (value) => {
+  if (value === null || value === undefined || value === '') {
+    return true;
+  }
+};
 
 export { getRandomPositiveInteger, checkStringLength, getRandomArrayElement, isEscapeKey};
