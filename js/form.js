@@ -14,6 +14,7 @@ const uploadFormConfing = {
   errorTextParent: 'img-upload__element',
   errorTextClass: 'img-upload__error',
 };
+
 const pristine = new Pristine(uploadForm, uploadFormConfing);
 
 const openModal = () => {
@@ -94,3 +95,5 @@ cancelButton.addEventListener ('click', onCancelButtonClick);
 uploadForm.addEventListener('submit', onFormSubmit);
 
 
+overlay.classList.remove('hidden');
+body.classList.add('modal-open');
