@@ -1,5 +1,6 @@
 import { isEscapeKey } from "./until.js";
 import { resetScale } from "./scale.js";
+import { resetFilter } from "./filter.js";
 
 const body = document.querySelector('body');
 const uploadForm = body.querySelector('.img-upload__form');
@@ -27,6 +28,7 @@ const closeModal = () => {
   uploadForm.reset();
   pristine.reset();
   resetScale();
+  resetFilter();
   overlay.classList.add('hidden');
   body.classList.remove('modal-open');
   document.removeEventListener('keydown', onModalEscKeyDown);
@@ -94,6 +96,3 @@ fileInput.addEventListener('change', onFileInputChange);
 cancelButton.addEventListener ('click', onCancelButtonClick);
 uploadForm.addEventListener('submit', onFormSubmit);
 
-
-overlay.classList.remove('hidden');
-body.classList.add('modal-open');
